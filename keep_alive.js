@@ -1,6 +1,8 @@
 const http = require("http");
 
-const port = process.env.PORT || 8080;
+const rawPort = process.env.PORT;
+const parsedPort = Number(rawPort);
+const port = Number.isInteger(parsedPort) && parsedPort > 0 ? parsedPort : 8080;
 
 const server = http.createServer((req, res) => {
   res.writeHead(200, { "Content-Type": "text/plain; charset=utf-8" });
